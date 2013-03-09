@@ -20,7 +20,7 @@ Db.open(function (err, client) {
       Db.close()
       }
     else {
-      console.log(weapon._id, " strength: ", weapon.strength, " location: ", weapon.location );
+      console.lob( weapon.name, " strength: ", weapon.strength, " location: ", weapon.location );
       }
 
   });
