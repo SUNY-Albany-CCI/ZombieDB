@@ -14,3 +14,13 @@ db.zombies.find( { location: { $near: person.location } } ).forEach(function(zom
 
   });
 
+var radius = 10;
+
+print('\nThe following Zombies are in a ', radius, ' meters radius from ', person.name,'\n');
+
+db.zombies.find( { location: { $near: person.location, $maxDistance : radius } } ).forEach(function(zombie) {
+
+  print( zombie.location, zombie.strength );
+
+  });
+

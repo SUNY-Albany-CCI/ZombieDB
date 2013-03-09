@@ -12,3 +12,13 @@ db.people.find( { location: { $near: person.location } } ).forEach(function(clos
 
   });
 
+var radius = 20;
+
+print('\nThe following people are in a ', radius, ' meters radius from ', person.name,'\n');
+
+db.people.find( { location: { $near: person.location, $maxDistance: radius } } ).forEach(function(closebyperson) {
+
+  print( closebyperson.name, closebyperson.location, closebyperson.weapon );
+
+  });
+
