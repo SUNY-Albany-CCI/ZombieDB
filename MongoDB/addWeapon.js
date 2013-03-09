@@ -1,4 +1,4 @@
 //
 // Survival Suggestion: Pick weapons that hurt zombies.
 //
-db.weapons.insert( { weapon : "baseball bat", effectiveness: 10 } )
+db.weapons.insert( { weapon : "baseball bat", strength: 10, location: [-1,-2] } )

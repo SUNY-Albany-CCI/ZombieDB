@@ -2,8 +2,12 @@
 // Survival Suggestion: Pick weapons that hurt zombies.
 //
 
-print('\n These are the suggested weapons \n')
+print('\n Available weapons \n')
+
 
 db.weapons.find().forEach(function(weapon) {
-  print( weapon.name, " effectivenes: ", weapon.effectiveness )
+  print( weapon.name, " strength: ", weapon.strength, " location: ", weapon.location )
 })
+
+
+print('\n')
