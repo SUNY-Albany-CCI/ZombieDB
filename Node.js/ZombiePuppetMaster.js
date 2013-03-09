@@ -23,8 +23,8 @@ function walkingDead() {
 
         console.log(zombie._id, " strength: ", zombie.strength, " location: ", zombie.location );
 
-        var randomlat = Math.floor((Math.random()*2)-1);
-        var randomlon = Math.floor((Math.random()*2)-1);
+        var randomlat = ( Math.random() * 2.0 ) - 1.0;
+        var randomlon = ( Math.random() * 2.0 ) - 1.0;
 
         var latitude  = randomlat + zombie.location[0];
         var longitude = randomlon + zombie.location[1];
