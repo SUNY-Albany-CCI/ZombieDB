@@ -1,15 +1,14 @@
 //
 // Survival advice: Blades don't need reloading.
 //
-db.people.find( { name: "Sean" }).forEach(function(person) {
 
-  print('\nThe following weapons are near ', person.name,'\n');
+var person = db.people.findOne( { name: "Sean" });
 
-  db.weapons.find( { location: { $near: person.location } } ).forEach(function(weapon) {
+print('\nThe following weapons are near ', person.name,'\n');
 
-    print( weapon.name, weapon.location );
+db.weapons.find( { location: { $near: person.location } } ).forEach(function(weapon) {
 
-    });
+  print( weapon.name, weapon.location );
 
   });
 

@@ -4,15 +4,13 @@
 //    Keep moving, keep low, keep quiet, keep alert !
 //
 
-db.people.find( { name: "Sean" }).forEach(function(person) {
+var person = db.people.findOne( { name: "Sean" } );
 
-  print('\nThe following Zombies are near ', person.name,'\n');
+print('\nThe following Zombies are near ', person.name,'\n');
 
-  db.zombies.find( { location: { $near: person.location } } ).forEach(function(zombie) {
+db.zombies.find( { location: { $near: person.location } } ).forEach(function(zombie) {
 
-    print( zombie.location, zombie.strength );
-
-    });
+  print( zombie.location, zombie.strength );
 
   });
 
