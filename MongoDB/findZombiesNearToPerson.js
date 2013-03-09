@@ -1,6 +1,10 @@
-var personlocation = db.people.find( { name: "Sean" }, {location: 1} )
-var zombiesnear = db.zombies.find( { location: { $near : personlocation }, { location: 1, weapon: 1 } )
+db.people.find( { name: "Sean" }).forEach(function(person) {
 
-for (zombie in zombiesnear) {
-  console.log(zombie)
-  }
+  db.zombies.find( { location: { $near: person.location } } ).forEach(function(zombie) {
+
+    print( zombie.location, zombie.weapon )
+
+    })
+
+  })
+
