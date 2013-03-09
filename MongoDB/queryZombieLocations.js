@@ -4,7 +4,7 @@
 
 db.zombies.find().forEach(function(zombie) {
 
-  print( zombie.location, zombie.weapon )
+  print( zombie.location, zombie.strength )
 
 })
 

@@ -6,7 +6,7 @@ print('\nList of zombies... no place is safe... \n')
 
 
 db.zombies.find().forEach(function(zombie) {
-  print(zombie._id, " weapon: ", zombie.weapon, " location: ",zombie.location )
+  print(zombie._id, " strength: ", zombie.strength, " location: ",zombie.location )
 })
 
 
