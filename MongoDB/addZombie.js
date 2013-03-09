@@ -1,1 +1,4 @@
-db.zombies.insert( { strength: 5, location: [300,200] } )
+//
+//  They keep coming...
+//
+db.zombies.insert( { strength: 5, location: [-2,3] } );
