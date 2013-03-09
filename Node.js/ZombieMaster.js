@@ -1,9 +1,8 @@
 var http = require('http');
+
 var mongodb = require('mongodb');
-
 var server = new mongodb.Server("127.0.0.1", 27017, {});
-
-var db = new mongodb.Db('zombiedb', server, {})
+var Db = new mongodb.Db('zombiedb', server, {w:0});
 
 var port = 8666;
 
@@ -14,7 +13,7 @@ http.createServer( function(req, res) {
   res.writeHead(200, {'content-type': 'text/plain'});
   res.write('No place is safe, only safer !\n');
 
-  db.open( function (error, client) {
+  Db.open( function (error, client) {
 
     if (error) throw error;
 
@@ -24,8 +23,12 @@ http.createServer( function(req, res) {
 
     listOfZombies.each( function(err, zombie ) {
 
-      res.write(' strength ');
-      res.write('\n');
+      if( zombie == null) {
+        Db.close()
+        }
+      else {
+        console.log(zombie._id, " strength: ", zombie.strength, " location: ", zombie.location );
+        }
 
       });
 
