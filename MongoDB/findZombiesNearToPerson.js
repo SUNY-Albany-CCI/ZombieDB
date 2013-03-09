@@ -1,8 +1,10 @@
 db.people.find( { name: "Sean" }).forEach(function(person) {
 
+  print('\nThe following Zombies are near ', person.name,'\n')
+
   db.zombies.find( { location: { $near: person.location } } ).forEach(function(zombie) {
 
-    print( zombie.location, zombie.weapon )
+    print( zombie.location, zombie.weapon, zombie.strength )
 
     })
 
