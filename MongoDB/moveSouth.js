@@ -14,7 +14,7 @@ var name = personEntry.name;
 var latd = personEntry.location[0];
 var long = personEntry.location[1];
 
-var newlatd = latd + distance;
+var newlatd = latd - distance;
 
 db.people.update( { _id: personEntry._id }, { $set :  { location: [ newlatd, long ] } } );
 

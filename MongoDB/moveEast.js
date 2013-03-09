@@ -14,14 +14,14 @@ var name = personEntry.name;
 var latd = personEntry.location[0];
 var long = personEntry.location[1];
 
-var newlatd = latd + distance;
+var newlong = long + distance;
 
-db.people.update( { _id: personEntry._id }, { $set :  { location: [ newlatd, long ] } } );
+db.people.update( { _id: personEntry._id }, { $set :  { location: [ latd, newlong ] } } );
 
 
 print('\n',name, ' moved');
 print('from ', latd, long );
-print('to   ', newlatd, long );
+print('to   ', latd, newlong );
 
 print('\n');
 
