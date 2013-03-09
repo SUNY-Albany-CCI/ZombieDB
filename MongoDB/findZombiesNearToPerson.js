@@ -20,7 +20,7 @@ print('\nThe following Zombies are in a ', radius, ' meters radius from ', perso
 
 db.zombies.find( { location: { $near: person.location, $maxDistance : radius } } ).forEach(function(zombie) {
 
-  print( zombie.location, zombie.strength );
+  print( 'location: ', zombie.location, ' strength: ', zombie.strength );
 
   });
 
