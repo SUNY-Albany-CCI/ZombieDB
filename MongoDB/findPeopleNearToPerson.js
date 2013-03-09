@@ -8,7 +8,7 @@ print('\nThe following people are near ', person.name,'\n');
 
 db.people.find( { location: { $near: person.location } } ).forEach(function(closebyperson) {
 
-  print( closebyperson.name, closebyperson.location, closebyperson.weapon );
+  print( closebyperson.name, closebyperson.location, closebyperson.weapon.name );
 
   });
 
@@ -18,7 +18,7 @@ print('\nThe following people are in a ', radius, ' meters radius from ', person
 
 db.people.find( { location: { $near: person.location, $maxDistance: radius } } ).forEach(function(closebyperson) {
 
-  print( closebyperson.name, closebyperson.location, closebyperson.weapon );
+  print( closebyperson.name, closebyperson.location, closebyperson.weapon.name );
 
   });
 
