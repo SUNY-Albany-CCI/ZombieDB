@@ -1,0 +1,17 @@
+ZombieDB
+========
+
+This project is an educational tool for teaching Databases.
+
+Copyright is held by the contributors, and the project is
+licensed under the Apache 2.0 License.
+
+Please see LICENSE file for details.
+
+List of contributors can be checked with the following Git
+command:
+
+
+            git log --format='%aN' | sort -u
+
+
