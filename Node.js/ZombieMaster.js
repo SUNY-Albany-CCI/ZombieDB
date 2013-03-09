@@ -27,12 +27,13 @@ http.createServer( function(req, res) {
         Db.close()
         }
       else {
+        res.write('Hello');
         console.log(zombie._id, " strength: ", zombie.strength, " location: ", zombie.location );
+        res.write(  zombie._id + " strength: " + zombie.strength + " location: " + zombie.location );
         }
 
       });
 
-    db.close();
     });
 
   res.end("Good Luck !\n");
