@@ -19,17 +19,10 @@ if ( !closestZombie ) {
 }
 else {
 
-  var weaponName = person.weapon;
-
-  print('with weapon ', weaponName );
-
+  print('with weapon ', person.weapon.name );
   print('zombie with strength ', closestZombie.strength );
 
-  var weaponEntry = db.weapons.findOne( { name: weaponName } );
-
-  var weaponStrength = weaponEntry.strength;
-
-  var remainingStrength = closestZombie.strength - weaponStrength;
+  var remainingStrength = closestZombie.strength - person.weapon.strength;
 
   if ( remainingStrength > 0 ) {
 
