@@ -1,43 +1,34 @@
-var mongodb = require('mongodb');
-var server = new mongodb.Server("127.0.0.1", 27017, {});
-var Db = new mongodb.Db('zombiedb', server, {w:0});
+var databaseUrl = "zombiedb";
+var collections = ["people", "zombies","weapons"]
+var db = require("mongojs").connect(databaseUrl, collections);
 
 function walkingDead() {
 
-  Db.open( function (error, client) {
+  console.log('------------------');
 
-    if (error) throw error;
+  db.zombies.find({}, function(err, zombies) {
 
-    var zombieCollection = new mongodb.Collection(client, 'zombies');
+    if( err || !zombies) console.log("No data found");
+    else {
+      zombies.forEach( function(zombie) {
 
-    var listOfZombies = zombieCollection.find();
+      console.log(zombie._id, " strength: ", zombie.strength, " location: ", zombie.location );
 
-    console.log('------------------');
+      var randomlat = 0.0002 * ( ( Math.random() * 2.0 ) - 1.0 );
+      var randomlon = 0.0002 * ( ( Math.random() * 2.0 ) - 1.0 );
 
-    listOfZombies.each( function(err, zombie ) {
+      var latitude  = randomlat + zombie.location[0];
+      var longitude = randomlon + zombie.location[1];
 
-      if( zombie == null) {
-        Db.close()
-        }
-      else {
-
-        console.log(zombie._id, " strength: ", zombie.strength, " location: ", zombie.location );
-
-        var randomlat = ( Math.random() * 2.0 ) - 1.0;
-        var randomlon = ( Math.random() * 2.0 ) - 1.0;
-
-        var latitude  = randomlat + zombie.location[0];
-        var longitude = randomlon + zombie.location[1];
-
-        zombieCollection.update( { _id : zombie._id },
-            { $set : {  location : [ latitude, longitude ] } } );
-        }
-
+      db.zombies.update( { _id : zombie._id },
+          { $set : {  location : [ latitude, longitude ] } } );
       });
+    }
 
     });
 
-}
+  }
+
 
 var timeInterval = 1500; // milliseconds
 interval = setInterval(walkingDead, timeInterval);
