@@ -20,8 +20,9 @@
     var iconBase = 'http://54.225.78.7/ZombieDB/resources/icons/icons/';
 
     var socket = io.connect('http://54.225.78.7:8888');
-    socket.on('news', function (data) {
-      locations = data;
+
+    var updateLocations = function (locations) {
+
       socket.emit('my other event', { my: 'data' });
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -56,7 +57,9 @@
 
      }
 
-    });
+    }
+
+    socket.on('news', updateLocations );
   </script>
 </body>
 </html>
