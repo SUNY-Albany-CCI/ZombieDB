@@ -1,0 +1,7 @@
+
+1 meters ~= 0.001 degrees
+
+SUNY Albany Main Fountain      42.6862,  -73.8239
+SUNY Albany Collins Circle     42.6880,  -73.8219
+SUNY Albany Indian Pond        42.6790,  -73.8239
+
