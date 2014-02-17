@@ -6,9 +6,11 @@
 
 var person = db.people.findOne( { name: "Sean" } );
 
-var radius = 10;
+var radiusInMeters = 10;
+var metersToDegrees = 111320.0;
+var radius = radiusInMeters / metersToDegrees;
 
-print('\nThe following Zombies are in a ', radius, ' meters radius from ', person.name,'\n');
+print('\nThe following Zombies are in a ', radiusInMeters, ' meters radius from ', person.name,'\n');
 
 db.zombies.find( { location: { $near: person.location, $maxDistance : radius } } ).forEach(function(zombie) {
 

@@ -4,9 +4,11 @@
 
 var weapon = db.weapons.findOne( { name: "Baseball Bat" });
 
-print('\nThe following people are in a ', radius, ' meters radius from ', weapon.name,'\n');
+var radiusInMeters = 10;
+var metersToDegrees = 111320.0;
+var radius = radiusInMeters / metersToDegrees;
 
-var radius = 20;
+print('\nThe following people are in a ', radiusInMeters, ' meters radius from ', weapon.name,'\n');
 
 db.people.find( { location: { $near: weapon.location, $maxDistance: radius } } ).forEach(function(closebyperson) {
 

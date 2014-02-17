@@ -4,9 +4,11 @@
 
 var person = db.people.findOne( { name: "Sean" } );
 
-var radius = 20;
+var radiusInMeters = 10;
+var metersToDegrees = 111320.0;
+var radius = radiusInMeters / metersToDegrees;
 
-print('\nThe following people are in a ', radius, ' meters radius from ', person.name,'\n');
+print('\nThe following people are in a ', radiusInMeters, ' meters radius from ', person.name,'\n');
 
 db.people.find( { location: { $near: person.location, $maxDistance: radius } } ).forEach(function(closebyperson) {
 

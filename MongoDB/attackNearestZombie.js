@@ -8,7 +8,9 @@ var person = db.people.findOne( { name: "Sean" } );
 
 print('\n',person.name, 'is attacking');
 
-var radius = 0.010;  // about 10 meters
+var radiusInMeters = 10;
+var metersToDegrees = 111320.0;
+var radius = radiusInMeters / metersToDegrees;
 
 var closestZombie = db.zombies.findOne( { location: { $near: person.location, $maxDistance : radius } } );
 

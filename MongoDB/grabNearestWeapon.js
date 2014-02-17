@@ -8,7 +8,9 @@ var person = db.people.findOne( { name: "Sean" } );
 
 print('\n', person.name, 'is trying to grab a weapon');
 
-var radius = 10;
+var radiusInMeters = 10;
+var metersToDegrees = 111320.0;
+var radius = radiusInMeters / metersToDegrees;
 
 var closestWeapon = db.weapons.findOne( { location: { $near: person.location, $maxDistance : radius } } );
 
