@@ -25,7 +25,7 @@ else {
   print('with strength ', closestWeapon.strength );
 
   // remove from list of available weapons
-  db.zombies.remove( { _id: closestWeapon._id } );
+  db.weapons.remove( { _id: closestWeapon._id } );
 
   db.people.update( { _id: person._id },
      { $set : {
